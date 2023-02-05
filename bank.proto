@@ -1,0 +1,49 @@
+syntax= "proto3";
+
+package bank;
+
+service bank {
+	rpc BankCreate(BankCreateReq) returns (BankCreateResp);
+	rpc CreateAccount(AccountCreateReq) returns (AccountCreateResp);
+	rpc AddAmount(AmountAddReq) returns (AmountAddResp);
+	rpc SubAmount(AmountSubReq) returns (AmountSubResp);
+	rpc ListAccount(Empty) returns (Empty);
+}
+
+message BankCreateReq {
+	int64 cap = 1;
+}
+
+message BankCreateResp {
+	int64 cap = 1;
+}
+
+message AccountCreateReq {
+	string account_name = 1;
+}
+
+message AccountCreateResp {
+	int64 new_amount = 1;
+}
+
+message AmountAddReq {
+	string account_name = 1;
+	int64 amount = 2;
+}
+
+message AmountAddResp {
+	int64 new_amount = 1;
+}
+
+message AmountSubReq {
+	string account_name = 1;
+	int64 amount = 2;
+}
+
+message AmountSubResp {
+	int64 new_amount = 1;
+}
+
+message Empty{
+	
+}

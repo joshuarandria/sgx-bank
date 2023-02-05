@@ -1,0 +1,11 @@
+enclave {
+    include "Bank.h"
+    trusted {
+        // bank_init
+        public int bank_create([in] int* capacity);
+        public int account_create([in, string] const char* account_name);
+        public int amount_add([in, string] const char* account_name, [in] int* amount);
+        public int amount_sub([in, string] const char* account_name, [in] int* amount);
+        public int list_accounts();
+    };
+};
