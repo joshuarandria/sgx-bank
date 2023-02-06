@@ -1,19 +1,30 @@
-# Distributed bank with SGX Enclave protection
+# Simple bank app using SGX
 
-## How to use
+## Install dependency
 
-- `git clone <repository>`
-- `cd sgx-distributed-bank `
-- `make `
-- may have to source this: `path to /sgxsdk_driver/sgxsdk/environment`. You can use `locate /sgxsdk_driver/sgxsdk`
-- `./bank_server_sgx <capacity of bank>` in one terminal
-- `./build/bank_client <nbr of accounts to create>` in another
+Ubuntu:
+```
+sudo apt install protobuf-compiler libgrpc++-dev protobuf-compiler-grpc
+```
 
-## Credits and code used in this repo
+## Build
 
-We used this code to get started with the enclave
-https://github.com/digawp/hello-enclave
+```
+git clone https://gitlab.inf.telecom-sudparis.eu/pipereau/sgx-bank.git
+cd sgx-bank
+git submodule init
+git submodule update
+make
+```
 
-## Authors
+## Run
 
-Made with OsgoodSchlatter as part of school project.
+Server:
+```
+LD_LIBRARY_PATH=./build ./build/bank_server <bank_capacity>
+```
+
+Client:
+```
+./build/bank_client <nbr of accounts to create>
+```
